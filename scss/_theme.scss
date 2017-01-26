@@ -1,3 +1,14 @@
 /* =========================
           Theme Styles 
    ========================= */
+
+   body {
+   	background: #000 url("../img/bg.jpg") center center fixed;
+   	background-size: cover;
+   }
+
+   .wrapper {
+   	max-width: 500px;
+   	background: #fff;
+   	margin: 0 auto;
+   }
