@@ -6882,12 +6882,58 @@ button.close {
   }
 }
 
+/* Color */
 /* =========================
           Base Styles 
    ========================= */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
 /* =========================
           Layout Styles 
    ========================= */
+.clearfix {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.wrapper {
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.l-list-two-column {
+  float: left;
+  width: 50%;
+}
+
+.l-list-inline {
+  display: inline-block;
+}
+
+.tempareture-area {
+  height: 194px;
+}
+
 /* =========================
           Modules Styles 
    ========================= */
@@ -7178,20 +7224,33 @@ html *:after {
   }
 }
 
+.m-brief {
+  width: 100%;
+}
+
 /* =========================
           Theme Styles 
    ========================= */
 body {
-  background: #000 url("../img/bg.jpg") center center fixed;
+  background: #2f3033 url("../img/bg.jpg") center center fixed;
   background-size: cover;
 }
 
-.wrapper {
-  max-width: 500px;
-  background: #fff;
-  margin: 0 auto;
+.dark-bg {
+  background: #2f3033;
+  color: #fff;
 }
 
-.weather-area {
+.light-bg {
   background: #f2f7ff;
+  color: #2f3033;
+}
+
+.yeollow-bg {
+  background: #ffe869;
+  color: #2f3033;
+}
+
+.text-yeollow {
+  color: #ffe869;
 }

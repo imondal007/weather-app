@@ -1,3 +1,28 @@
 /* =========================
           Layout Styles 
    ========================= */
+
+   .clearfix {
+   	clear: both;
+   	content: "";
+    display: table;
+   }
+
+   .wrapper {
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+   }
+
+   .l-list-two-column {
+    float: left;
+   	width: 50%;
+   }
+
+   .l-list-inline {
+    display: inline-block;
+   }
+
+   .tempareture-area {
+      height: 194px;
+   }
