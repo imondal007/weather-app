@@ -1,7 +1,7 @@
 # Starter
-A starter kit for your modern front-end workflow.
-
-https://github.com/imondal007/starter.git
+A simple weather app Powered by Open Weather API.
+Demo: http://weather-app-fcc.surge.sh/
+Github: https://github.com/imondal007/weather-app.git
 
 Once you have cloned the repo, navigate in to the directory via terminal and run.
 
