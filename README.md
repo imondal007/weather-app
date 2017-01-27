@@ -1,4 +1,4 @@
-# Starter
+# Local Weather
 A simple weather app Powered by Open Weather API.
 Demo: http://weather-app-fcc.surge.sh/
 Github: https://github.com/imondal007/weather-app.git
