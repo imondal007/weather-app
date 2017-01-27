@@ -12,7 +12,11 @@
     max-width: 500px;
     width: 100%;
     margin: 0 auto;
-   }
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 
    .l-list-two-column {
     float: left;
@@ -23,6 +27,12 @@
     display: inline-block;
    }
 
-   .tempareture-area {
-      height: 194px;
-   }
+   @media only screen and (max-width: 300px) {
+
+   .wrapper {
+    position: absolute;
+    top: 0;
+    transform: translate(-50%, 0);
+  }
+   
+}

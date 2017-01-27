@@ -2,13 +2,37 @@
           Base Styles 
    ========================= */
 
-   * {
-   	box-sizing: border-box;
-   }
+  
 
    body {
    	margin: 0;
    	padding: 0;
+      font-family: 'Open Sans', sans-serif;
+      background: $black url("../img/bg.jpg") center center fixed;
+      background-size: cover;
+   }
+   h1, .h1, h2, .h2, h3, .h3, h4, .h4, p {
+      margin: 0;
+      padding: 0;
+      font-weight: 400;
+   }
+
+   h1, .h1 {
+      font-size: 73px;
+      margin-top: 53px;
+      margin-bottom: 4px;
+   }
+
+   h2, .h2 {
+      font-size: 24px;
+   }
+
+   h4, .h4 {
+    font-size: 21px;
+   }
+
+   p {
+      font-size: 14px;
    }
 
    ul {
@@ -21,3 +45,27 @@
       margin: 0;
       padding: 0;
    }
+
+   @media only screen and (max-width: 767px) {
+   
+   body {
+      padding: 0;
+      background: #fff;
+   }
+
+   h1, .h1 {
+    font-size: 30px;
+    padding-top: 50px;
+    margin-top: 0;
+    margin-bottom: 4px;
+   }
+
+   h4, .h4 {
+    font-size: 14px;
+   }
+
+   p {
+    font-size: 11px;
+   }
+   
+}
