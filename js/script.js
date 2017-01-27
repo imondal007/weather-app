@@ -3,7 +3,7 @@
  * Documentation: https://openweathermap.org/current         *
  * --------------------------------------------------------- */
 
-var api       = "http://api.openweathermap.org/data/2.5/weather?",
+var api       = "https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather?",
 	appid     = "appid=e0b01df8d539332186b67b9610fdd7b2",
 	lon       = "lon=",
 	lat       = "lat=",
@@ -35,6 +35,7 @@ $("document").ready(function() {
 				temp.text(data.main.temp);
 				indicator.text("°C");
 				city.text(data.name);
+				console.log(data);
 
 				// Convert Unix Time to Local GMT
 				var sunRiseTime = new Date(data.sys.sunrise*1000).toLocaleTimeString(),
