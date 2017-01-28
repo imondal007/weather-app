@@ -52,10 +52,10 @@ $(document).ready(function($) {
 				weatherCon = "thunderstom";
 				}
 			if (weatherId > 499 && weatherId < 532) {
-				weatherCon = "rain";
+				weatherCon = "rainy";
 				}
 			if (weatherId > 599 && weatherId < 623) {
-				weatherCon = "snow";
+				weatherCon = "flurries";
 				}
 			if (weatherId > 700 && weatherId < 782) {
 				weatherCon = "clouds";
