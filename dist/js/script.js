@@ -69,12 +69,11 @@ $(document).ready(function($) {
 			if (weatherId > 899 && weatherId < 907) {
 				weatherCon = "thunderstom";
 				}
-			else {
-				weatherCon = "clear";
-				}
+			
 
 			function addIcon(weatherIcon) {
 				$('.' + weatherIcon).removeClass('hide');
+				console.log(weatherCon);
 			};
 			addIcon(weatherCon);
 		})
