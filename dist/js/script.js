@@ -9,80 +9,101 @@ var api       = "http://api.openweathermap.org/data/2.5/weather?",
 	indicator = $("#indicator"),
 	city      = $("#city"),
 	sunRise   = $("#sun-rise"),
-	sunSet    = $("#sun-set"),
-	appuri;
+	sunSet    = $("#sun-set");
 
+// Getting Location
 $(document).ready(function($) {
-	
-	//Get Location
+
 	$.ajax({
 		url: 'http://ipinfo.io/',
-		type: 'GET',
 		dataType: 'json',
 	})
 
-	.done(function(location) {
-		var place   = location.city,
-			apiuri = api + "q=" + place + "&" + "units=metric" + "&" + appid;
-
-		$.ajax({
-			url: apiuri,
-			type: 'GET',
-			dataType: 'json',
-		})
-
-		// Update Data On page if we successfully communicate with server
-		.done(function(data) {
-			temp.text(Math.round(data.main.temp));
-			indicator.text("°C");
-			city.text(place);
-
-			// Convert Unix Time to Local GMT
-			var sunRiseTime = new Date(data.sys.sunrise*1000).toLocaleTimeString(),
-				sunSetTime 	= new Date(data.sys.sunset*1000).toLocaleTimeString();
-
-			sunRise.text(sunRiseTime);
-			sunSet.text(sunSetTime);
-
-			// Adding Icon
-			var weatherCon,
-				weatherId = (data.weather[0].id);
-			
-			if (weatherId > 199 && weatherId < 322) {
-				weatherCon = "thunderstom";
-				}
-			if (weatherId > 499 && weatherId < 532) {
-				weatherCon = "rainy";
-				}
-			if (weatherId > 599 && weatherId < 623) {
-				weatherCon = "flurries";
-				}
-			if (weatherId > 700 && weatherId < 782) {
-				weatherCon = "clouds";
-				}
-			if (weatherId === 800) {
-				weatherCon = "clear";
-				}
-			if (weatherId > 800 && weatherId < 805) {
-				weatherCon = "clouds";
-				}
-			if (weatherId > 899 && weatherId < 907) {
-				weatherCon = "thunderstom";
-				}
-			
-
-			function addIcon(weatherIcon) {
-				$('.' + weatherIcon).removeClass('hide');
-				console.log(weatherCon);
-			};
-			addIcon(weatherCon);
-		})
-
-		// Show Error Massage if something went Wrong
-		.fail(function() {
-			console.log("error");
-		});
+	.done(function (data) {
+		var geoData = data;		// Storing response from ipinfo.com
+		getWeather(geoData);	// Calling getWeather function
+	});
 		
+});
+
+
+// Getting current weather status
+function getWeather(geoData) {
+
+	var cityData 	= geoData.city,											// City
+		location	= "lat=" + geoData.loc.replace(",", "&lon="),			// geoLocation
+		apiuri 		= api + location + "&" + "units=metric" + "&" + appid;	// Generating url for api
+		
+	$.ajax({
+		url: apiuri,
+		dataType: 'json',
+	})
+
+	.done(function(data) {
+		var weatherData = data;		// Storing Response From open weathermap api
+		updateWeather(weatherData, cityData); // Calling updateWeather function
 	});
 	
-});
+};
+
+
+// Updateing weather
+function updateWeather(weatherData, cityData) {
+
+	var tempData 	= Math.round(weatherData.main.temp),							// Tempareture
+		sunRiseTime = new Date(weatherData.sys.sunrise*1000).toLocaleTimeString(),	// Sun Rise Time
+		sunSetTime 	= new Date(weatherData.sys.sunset*1000).toLocaleTimeString(),	// Sun Set Time
+		weatherId 	= (weatherData.weather[0].id);
+
+	// Manipulating DOM
+	temp.text(tempData);
+	indicator.text("°C");
+	city.text(cityData);
+	sunRise.text(sunRiseTime);
+	sunSet.text(sunSetTime);
+
+	genarateIcon(weatherId); // Calling genarateIcon Function
+	
+};
+
+
+// Genarate Icon
+function genarateIcon(weatherId) {
+	var weatherCon;
+			
+	if (weatherId > 199 && weatherId < 322) {
+		weatherCon = "thunderstom";
+		addIcon(weatherCon);
+	}
+	if (weatherId > 499 && weatherId < 532) {
+		weatherCon = "rainy";
+		addIcon(weatherCon);
+	}
+	if (weatherId > 599 && weatherId < 623) {
+		weatherCon = "flurries";
+		addIcon(weatherCon);
+	}
+	if (weatherId > 700 && weatherId < 782) {
+		weatherCon = "clouds";
+		addIcon(weatherCon);
+	}
+	if (weatherId === 800) {
+		weatherCon = "clear";
+		addIcon(weatherCon);
+	}
+	if (weatherId > 800 && weatherId < 805) {
+		weatherCon = "clouds";
+		addIcon(weatherCon);
+	}
+	if (weatherId > 899 && weatherId < 907) {
+		weatherCon = "thunderstom";
+		addIcon(weatherCon);
+	}
+
+}
+
+
+// Adding Icon
+function addIcon(weatherCon) {
+	$("." + weatherCon).removeClass('hide');
+}
